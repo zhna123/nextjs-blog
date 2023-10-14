@@ -1,5 +1,11 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+This is developed from the starter template for [Learn Next.js](https://nextjs.org/learn).
 
+## Convert to Typescript - main branch
+1. Create `tsconfig.json` under root
+2. Run dev server: `npm run dev` Next will install required packages for typescript usage
+3. Convert app to use Typescript
+
+## Starter code(javascript) - see starter branch
 1. Create next app
 ```
 npx create-next-app@latest nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
