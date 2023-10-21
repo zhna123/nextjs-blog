@@ -19,11 +19,11 @@ export function getSortedPostsData() {
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
-
+    
     // Combine the data with the id
     return {
       id,
-      ...(matterResult.data as { date: String; title: string }),
+      ...(matterResult.data as { date: string; excerpt: string; coverImage: string; title: string }),
     };
   });
   // Sort posts by date
@@ -78,6 +78,6 @@ export async function getPostData(id) {
   return {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string; title: string }),
+    ...(matterResult.data as { date: string; excerpt: string; coverImage: string; title: string }),
   };
 }
