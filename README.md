@@ -1,5 +1,10 @@
 This is developed from the starter template for [Learn Next.js](https://nextjs.org/learn).
 
+* Next.js pages router
+* Static Site Generation
+* API Routes + Vercel Postgres
+* [Jest + React Testing Library](https://nextjs.org/docs/pages/building-your-application/optimizing/testing#setting-up-jest-with-the-rust-compiler)
+
 ## Convert to Typescript - main branch
 1. Create `tsconfig.json` under root
 2. Run dev server: `npm run dev` Next will install required packages for typescript usage

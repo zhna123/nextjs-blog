@@ -13,29 +13,46 @@ export default function Contact() {
   const [sent, setSent] = useState<boolean>(false)
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
+  async function createContactsIfNotExists() {
+    const response = await fetch('/api/create-contacts-table')
+    if (response.status !== 200) {
+      throw new Error('Failed to create contacts table. Please try again.')  
+    } 
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true)
     setError(null)
     setSent(false)
+
+    const formElement = event.currentTarget
     
     try {
-      const formData = new FormData(event.currentTarget);
-      const response = await fetch('/api/message', {
+      await createContactsIfNotExists()
+      console.log(formElement)
+      const formData = new FormData(formElement);
+      const formDataObj = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      }
+      const response = await fetch('/api/add-contacts', {
         method: 'POST',
-        body: formData,
+        body: JSON.stringify(formDataObj),
       })
       if (response.status !== 200) {
         throw new Error('Failed to submit the data. Please try again.')  
       } 
       setSent(true)
+      const res = await response.json()
+      console.log(JSON.stringify(res.message))
     } catch(err) {
       setError(err.message)
       console.log(err)
     } finally {
       setIsSubmitting(false)
-      const form: HTMLFormElement = document.querySelector('#contact-form')
-      form.reset()
+      formElement.reset()
     }
   }
 
@@ -48,15 +65,15 @@ export default function Contact() {
       { error ? <div className="text-center mb-6 text-red-600">{error}</div> 
             : ( sent ? <div className="text-center mb-6 text-green-600">I've received your message and will get back to you soon!</div> : '')
       }
-      <form id="contact-form" onSubmit={handleSubmit} className="flex flex-col max-w-md mx-auto text-gray-800">
+      <form onSubmit={handleSubmit} className="flex flex-col max-w-md mx-auto text-gray-800">
         <label htmlFor="name">Name</label>
-        <input id="name" type="text" name="name" className="form-input mb-4 border-b-gray-300 border-x-0 border-t-0" required/>
+        <input id="name" type="text" name="name" aria-label="name" className="form-input mb-4 border-b-gray-300 border-x-0 border-t-0" required/>
 
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" name="email" className="form-input mb-4 border-b-gray-300 border-x-0 border-t-0" required/>
+        <input id="email" type="email" name="email" aria-label="email" className="form-input mb-4 border-b-gray-300 border-x-0 border-t-0" required/>
 
         <label htmlFor="message">Message</label>
-        <textarea id="message" name="message" className="form-textarea mb-8 border-b-gray-300 border-x-0 border-t-0" required></textarea>
+        <textarea id="message" name="message" aria-label="message" className="form-textarea mb-8 border-b-gray-300 border-x-0 border-t-0" required></textarea>
 
         <button type="submit" disabled={isSubmitting} className={`form-input border-none rounded-sm bg-gray-300 drop-shadow ${isSubmitting ? 'text-gray-400' : ''}`}>
           {isSubmitting ? 'Submitting...' : 'Submit'}
