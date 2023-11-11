@@ -1,5 +1,5 @@
 ---
-title: 'How to use Google Fonts with TailwindCSS'
+title: 'How To Use Google Fonts With TailwindCSS'
 excerpt: 'This article provides a guide on integrating Google Fonts into your project with TailwindCSS, including instructions for using them within a Next.js(version 13+) project.'
 coverImage: '/blog/fonts.jpeg'
 date: '2023-10-18'

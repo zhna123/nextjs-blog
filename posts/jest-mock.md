@@ -1,5 +1,5 @@
 ---
-title: 'Summarizing Different Mock Types in Jest'
+title: 'Summarizing Different Mock Types In Jest'
 excerpt: 'When writing tests, it is important to understand mocks, how they work, and when to use them. My recent experience with test writing encouraged me to learn more about different types of mocks.'
 coverImage: '/blog/jest-mock.jpeg'
 date: '2023-10-16'
