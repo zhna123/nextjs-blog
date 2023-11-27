@@ -1,10 +1,10 @@
 ---
 title: 'Javascript: Closure And Factory Pattern'
 excerpt: 'Closure is important for data encapsulation, and it is how the factory pattern is implemented. This short article provides simple language to understand the concept.'
-coverImage: '/blog/closure.jpg'
+coverImage: '/blog/closure.png'
 date: '2023-11-09'
 ogImage:
-  url: '/blog/closure.jpg'
+  url: '/blog/closure.png'
 ---
 
 A basic example:

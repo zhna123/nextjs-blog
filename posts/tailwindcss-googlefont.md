@@ -1,10 +1,10 @@
 ---
 title: 'How To Use Google Fonts With TailwindCSS'
 excerpt: 'This article provides a guide on integrating Google Fonts into your project with TailwindCSS, including instructions for using them within a Next.js(version 13+) project.'
-coverImage: '/blog/fonts.jpeg'
+coverImage: '/blog/fonts.png'
 date: '2023-10-18'
 ogImage:
-  url: '/blog/fonts.jpeg'
+  url: '/blog/fonts.png'
 ---
 
 There are 3 major types of generic font family:

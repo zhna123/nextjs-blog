@@ -1,0 +1,98 @@
+---
+title: 'Javascript: Iterable, Enumerable, And Iterations'
+excerpt: 'This article summarized iterable and enumerable objects, and the ways to iterate over them.'
+coverImage: '/blog/iterable.png'
+date: '2023-11-15'
+ogImage:
+  url: '/blog/iterable.png'
+---
+
+#### *What is an iterable?*
+
+An iterable is an object implements the iterable protocol. 
+To be iterable, an object must implement the `Symbol.iterator` function. This function returns an `iterator` object, which is used to obtain values to be iterated.
+
+An object is an iterator when it implements the `next()` method(iterator protocol). This method returns an object implementing `IteratorResult`. It has `done`(whether iteration is complete) and `value`(next value in iteration) properties.
+
+The iterable object can be iterated over by `for...of` or other syntaxes expecting iterables.
+
+  - Some Built-in iterables are: `String`, `Array`, `Map`, `Set`, `NodeList`, and they can be iterated over using `for...of`. For example:
+
+  ```
+  const monthMap = new Map();
+  monthMap.set("Jan", 1);
+  monthMap.set("Feb", 2);
+  monthMap.set("Mar", 3);
+
+  for (let [key, value] of monthMap) {
+    // Jan 1 
+    // Feb 2
+    // Mar 3
+    console.log(key, value) 
+  }
+  ```
+
+#### *What is an enumerable?*
+An enumerable object has `enumerable properties`(internal enumerable flag set to true). By default properties created via simple assignment and propery initializer are enumerable.
+
+They can be iterated over by `for...in`. For example:
+```
+const car = {
+  "make": "honda",
+  "year": 2016,
+  "model": "civic"
+};
+
+for (let prop in car) {
+  console.log(prop) // make year model
+}
+```
+This is like iterating over object keys.
+
+#### *How to iterate over object values?*
+  - Method 1: Use `Object.values()` 
+  ```
+  const car = {
+    "make": "honda",
+    "year": 2016,
+    "model": "civic"
+  };
+
+  const values = Object.values(car);
+  for (let value of values) {
+    console.log(value); // honda 2016 civic
+  }
+  ```
+  - Method 2: Use `Object.keys()` and `forEach` on the result key array
+  ```
+  const car = {
+    "make": "honda",
+    "year": 2016,
+    "model": "civic"
+  };
+
+  const keys = Object.keys(car);
+  keys.forEach(k => {
+    console.log(car[k]) // honda 2016 civic
+  })
+  ```
+
+#### *How to iterate over object key/value pairs?*
+  `Object.entries()` returns an array of key/value pairs(as array). Then iterate over the result array using `for...of`
+  ```
+  const car = {
+    "make": "honda",
+    "year": 2016,
+    "model": "civic"
+  };
+
+  for (let [key, value] of Object.entries(car)) {
+    // make honda
+    // year 2016
+    // model civic
+    console.log(key, value) 
+  }
+  ```
+
+
+

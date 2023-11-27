@@ -44,8 +44,8 @@ export default function Home({
             <Image 
               priority 
               src={coverImage} 
-              width={400}
-              height={300}
+              width={350}
+              height={250}
               alt="" 
               className='object-cover rounded-lg'
               />
