@@ -49,6 +49,9 @@ export default function Post({
         </div>
         <div className='pt-8 prose lg:prose-xl' dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
+      <div className='py-20 text-gray-600'>
+        <Link href="/">← Back to articles</Link>
+      </div>
     </Layout>
   );
 }

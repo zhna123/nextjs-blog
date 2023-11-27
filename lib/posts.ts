@@ -6,7 +6,7 @@ import html from 'remark-html';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export function getSortedPostsData() {
+function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -34,6 +34,20 @@ export function getSortedPostsData() {
       return -1;
     }
   });
+}
+
+export async function getPaginatedPostsData(
+  {
+    limit,
+    page,
+  }: {
+    limit: number
+    page: number
+  }
+) {
+  const allPosts = getSortedPostsData()
+  const paginatedPosts = allPosts.slice((page - 1) * limit, page * limit)
+  return { posts: paginatedPosts, total: allPosts.length }
 }
 
 export function getAllPostIds() {

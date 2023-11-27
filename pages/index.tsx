@@ -5,30 +5,38 @@ import Date from '../components/date';
 import Image from 'next/image';
 
 
-import { getSortedPostsData } from '../lib/posts';
+import { getPaginatedPostsData } from '../lib/posts';
 import { GetStaticProps } from 'next';
-import { SITE_TITLE } from '../lib/constant';
+import { PER_PAGE, SITE_TITLE } from '../lib/constant';
 import Profile from '../components/profile';
+import PaginationPage from '@/components/PaginatedPage';
+
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData();
+  const {posts, total} = await getPaginatedPostsData({limit: PER_PAGE, page: 1});
   return {
     props: {
-      allPostsData,
+      posts,
+      totalPosts: total,
+      currentPage: 1,
     },
   };
 }
 
 export default function Home({ 
-  allPostsData,
+  posts,
+  totalPosts,
+  currentPage
  }: {
-  allPostsData: {
+  posts: {
     date: string;
     excerpt: string; 
     coverImage: string;
     title: string;
     id: string;
-  }[]
+  }[],
+  totalPosts: number,
+  currentPage: number
  }) {
   return (
     <Layout>
@@ -37,29 +45,12 @@ export default function Home({
       </Head>
       <Profile />
       <section>
-        {/* <h2 className='text-2xl font-semibold text-gray-800 pb-4'>Blog</h2> */}
-        <ul >
-          {allPostsData.map(({ id, date, excerpt, coverImage, title }) => (
-          <li key={id} className='grid grid-cols-3 gap-4 py-6'>
-            <Image 
-              priority 
-              src={coverImage} 
-              width={350}
-              height={250}
-              alt="" 
-              className='object-cover rounded-lg'
-              />
-            <div className='col-span-2 px-2'>
-              <Link href={`/posts/${id}`} className='text-xl font-bold'>{title}</Link>
-              <br />
-              <small className='text-gray-600'>
-                <Date dateString={date} />
-              </small>
-              <p className='pt-4'>{excerpt}</p>
-            </div>
-          </li>
-          ))}
-        </ul>
+        <PaginationPage 
+          posts={posts}
+          currentPage={currentPage}
+          totalPosts={totalPosts}
+          perPage={PER_PAGE} 
+        />
       </section>
     </Layout>
   );
