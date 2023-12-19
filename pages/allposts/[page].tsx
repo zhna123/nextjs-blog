@@ -16,7 +16,7 @@ function PaginatedPage({ posts, totalPosts, currentPage }: PageProps) {
   return (
     <Layout>
       <Head>
-        <title>Page {currentPage} - {SITE_TITLE}</title>
+        <title>{`Page ${currentPage} - ${SITE_TITLE}`}</title>
       </Head>
       <Profile />
       <section>

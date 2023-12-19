@@ -1,3 +1,9 @@
+## Update 12/23
+* Used MDX instead of MD for blog content
+* Implemented Pagination
+
+---
+
 This is developed from the starter template for [Learn Next.js](https://nextjs.org/learn).
 
 * Next.js pages router

@@ -8,7 +8,7 @@ ogImage:
 ---
 
 A basic example:
-```
+```js
 function outerFunction() {
   const outer = "Outer function.";
 
@@ -22,7 +22,7 @@ const outer = outerFunction() // outerFunction executes, and it returns the inne
 outer() // Prints out "Outer function." - innerFunction still has access to the outer variable
 ```
 
-There are two nested functions in this example: an `outerFunction` and an `innerFunction`. Closure happens when the `innerFunction` remembers and has access to the variables from the `outerFunction`'s scope(in this case, it is the `outer` variable), even after the `outerFunction` executed.
+There are two nested functions in this example: an *outerFunction* and an *innerFunction*. Closure happens when the *innerFunction* remembers and has access to the variables from the *outerFunction*'s scope(in this case, it is the *outer* variable), even after the *outerFunction* executed.
 
 This is useful to create private variables and data capsulation. One usage is in the factory pattern, the factory function returns an object that contains the public accessible interface, while encapsulate private data. 
 
@@ -53,4 +53,4 @@ counter.inc() // 2
 counter.dec() // 1
 
 ```
-In this example, the `counter` variable is private. From outside, we can only see and call the data `counterFactory()` returns. (`inc` and `dec` methods from the returned `counter` object, in this case)
+In this example, the *counter* variable is private. From outside, we can only see and call the data *counterFactory()* returns. (*inc* and *dec* methods from the returned *counter* object, in this case)

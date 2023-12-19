@@ -13,8 +13,7 @@ export default function About() {
       <Profile />
       <section>
         <p>
-          Hi. My name is Na. I am an independent web developer. Currently, I'm learning a lot about React and Next.js to 
-          get really good at using these cool technologies. <br />
+          I am an independent web developer. Currently, I'm learning and using Next.js to build websites.<br />
           <br />
           When I learn new tech stuff, I often find myself searching for related topics. After a while, I noticed that 
           I keep forgetting and end up searching for the same things repeatedly! So, I thought it would be helpful to 

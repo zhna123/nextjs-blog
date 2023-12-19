@@ -23,9 +23,9 @@ const Post = ({coverImage, id, title, date, excerpt}: any) => {
         className='object-cover rounded-lg'
       />
       <div className='col-span-2 px-2'>
-        <Link href={`/posts/${id}`} className='text-xl font-bold'>{title}</Link>
+        <Link href={`/posts/${id}`} className='text-xl font-bold text-slate-800'>{title}</Link>
         <br />
-        <small className='text-gray-600'>
+        <small className='text-slate-600'>
           <Date dateString={date} />
         </small>
         <p className='pt-4'>{excerpt}</p>

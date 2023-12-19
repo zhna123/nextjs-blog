@@ -1,0 +1,50 @@
+---
+title: 'CSS: Element Positions'
+excerpt: 'This article summarized the distinction among CSS element positions with examples.'
+coverImage: '/blog/position.png'
+date: '2023-12-13'
+ogImage:
+  url: '/blog/position.png'
+---
+
+In the realm of CSS element positioning, elements fall into two categories: non-positioned and positioned. 
+
+### Non-Positioned Element
+**static position == no position specified**
+
+This is the **default** position for an element. The element will be placed in the normal document flow.
+
+*top*, *right*, *bottom*, *left*, and *z-index* properties have no effect on an element with static position.
+
+<CodePen id="KKGqQex" />
+
+### Positioned Element
+You are able to use *z-index* on a positioned element. Positioned elements are always on top of non-positioned elements.
+
+There are 4 types of position: relative, absolute, fixed, sticky.
+
+#### relative position
+The element with relative position is within the normal document flow. We can use *top*, *right*, *bottom*, *left* properties to set an offset from its normal position in the document flow.
+
+Compare the demo below with the previous demo, and notice how element 2 moved from its normal location.
+
+<CodePen id="qBJjRKP" />
+
+#### absolute position
+The element with absolute position is taken out of the normal document flow. We can use *top*, *right*, *bottom*, *left* properties to define its position relative to its nearest relatively positioned ancestor. If there’s no such ancestor, it will be positioned relative to the `<html>` element.
+
+Example of element 2 absolutely positioned relative to its nearest relatively positioned ancestor:
+<CodePen id="wvYeqvw" />
+
+Example of element 2 absolutely positioned relative to `<html>`:
+<CodePen id="mdzwMeo" />
+
+#### fixed position
+The element with fixed position is taken out of the normal document flow. It is then positioned relative to the browser viewport with the *top*, *right*, *bottom*, *left* properties. It appears fixed in the same position on the screen.
+
+<CodePen id="dygRvwB" />
+
+#### sticky position
+The element with sticky position is in the normal document flow, until the content starts to scroll. Then the sticky element will behave like a fixed element. Its offset defined by *top*, *right*, *bottom*, *left* properties is relative to the nearest ancestor that scrolls.
+
+<CodePen id="eYPRvJR" />

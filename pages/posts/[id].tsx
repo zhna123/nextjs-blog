@@ -4,15 +4,23 @@ import Head from 'next/head';
 import Date from '../../components/date';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Link from 'next/link';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize'
+import { CustomMDX } from '@/components/mdx';
 
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+interface Props {
+  mdxSource: MDXRemoteSerializeResult;
+  title: string;
+  date: string;
+}
+
+export const getStaticProps: GetStaticProps<{
+  mdxSource: MDXRemoteSerializeResult
+}> = async ({ params }) => {
   const postData = await getPostData(params.id);
-  return {
-    props: {
-      postData,
-    },
-  };
+  const mdxSource = await serialize(postData.content)
+  return { props: { mdxSource, 'title': postData.title, 'date': postData.date } }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -25,31 +33,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 }
 
-export default function Post({ 
-  postData 
-}: {
-  postData: {
-    title: string;
-    date: string;
-    contentHtml: string
-  }
-}) {
+export default function Post({ mdxSource, title, date }: Props) {
   return (
     <Layout>
       <Head>
-        <title>{postData.title}</title>
+        <title>{ title }</title>
       </Head>
-      <div className='py-6 text-gray-600'>
+      <div className='py-6 text-slate-600'>
         <Link href="/">← Back to articles</Link>
       </div>
       <article className='pt-12'>
-        <h1 className='text-4xl font-bold text-gray-800'>{postData.title}</h1>
-        <div className='text-gray-600 pt-2'>
-          <Date dateString={postData.date} />
+        <h1 className='font-bold text-slate-800'>{ title }</h1>
+        <div className='text-slate-600 pt-2'>
+          <Date dateString={date} />
         </div>
-        <div className='pt-8 prose lg:prose-xl' dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div className='pt-8 leading-loose prose prose-slate'>
+          <CustomMDX mdxSource={mdxSource} />
+        </div>
       </article>
-      <div className='py-20 text-gray-600'>
+      <div className='py-20 text-slate-600'>
         <Link href="/">← Back to articles</Link>
       </div>
     </Layout>

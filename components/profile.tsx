@@ -13,7 +13,7 @@ export default function Profile() {
         alt=""
         className='rounded-full'
       />
-      <h1 className='text-4xl font-bold text-gray-800 pt-4 font-serif'>{NAME}</h1>
+      <h1 className='font-bold text-slate-800 pt-4 font-serif'>{NAME}</h1>
       <Intro />
     </div>
   )

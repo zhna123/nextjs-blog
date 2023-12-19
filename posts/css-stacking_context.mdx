@@ -1,0 +1,56 @@
+---
+title: 'CSS: Stacking Context And z-index'
+excerpt: 'This article talks about CSS stacking conext and how to use z-index.'
+coverImage: '/blog/stacking-context.png'
+date: '2023-12-14'
+ogImage:
+  url: '/blog/stacking-context.png'
+---
+
+Imagine we are arranging two colored boxes. We may write code to have the pink one in front of the orange one, like in this  demo:
+
+<CodePen id="ExdmEOw" />
+
+It is all good - if two positioned elements overlap(without z-index), the latter defined element will be in front.
+
+But what if we want the orange one in front now? We can easily achieve it by adding *z-index* values.
+
+#### About z-index
+*z-index* defines elements in the 3-D space. You can adjust it to make an element closer or further from you. However, *z-index* won’t work by itself, it only has effect on positioned elements(non-static), flex items, and grid items. (when unspecified, the default value of *z-index* is auto)
+
+Since all of our box elements are already positioned, adding *z-index* to the orange box will bring it to the front.
+
+<CodePen id="xxydjVJ" />
+
+In our example, the parent container has no *z-index* value, so the positioned children elements can determine the stacking order outside the parent. Here is an example to put a child behind its parent.
+
+<CodePen id="XWxRxEr" />
+
+However, if we add a *z-index* value(other than auto) to the parent container, it creates a new stacking context, and all the children elements now trapped inside this parent, and we cannot place any child behind its parent anymore.
+
+#### Stacking Context
+If we fill the previous boxes with books, we can adjust the stacking order of the books from either box, and it will have no effect on the other box(or anything outside of that box). That is to say, all of the books from the pink box would always be in front.
+
+Similarly in CSS, if a parent element creates a stacking context(as a box), its children elements(as stacked books) will be ordered according to their own *z-index* value only inside the parent element. Meanwhile, all the children in this stacking context also maintain their parent’s stacking level, which is specified within the stacking context their parent resides in.
+
+There are multiple ways to create stacking context.
+
+- A positioned element with defined *z-index* value other than auto(auto doesn't set stacking context)
+- Flex item with defined *z-index* value other than auto
+- Grid item with defined *z-index* value other than auto
+- Elements with certain properties(eg, opacity)
+
+#### Example
+Here is an example of multiple stacking context created by positioned elements with *z-index* values. 
+
+<CodePen id="rNqmNrw" />
+
+After adding a *z-index* value to the relatively positioned parent container, it creates a stacking context. The pink box has a higher *z-index* value compares to the orange box, so it will stay in front.
+
+Each of these boxes is also relatively positioned with a *z-index* value, so they create their own stacking context as well.
+
+Now let’s look at the books inside the box.
+
+We can see that the *z-index* values of the books only determines their stacking order within their respective stacking context(their box). Even you set *z-index* value of a book in the orange box to be a higher value than any book in the pink box, it will still show up behind the pink box.
+
+
