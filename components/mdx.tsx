@@ -29,7 +29,7 @@ function CustomLink(props) {
 function CodePen({ title="", id }) {
   return (
     <iframe height="300" width="100%" scrolling="no" title={ title } 
-      src={`https://codepen.io/zhna123/embed/${id}?default-tab=css%2Cresult&editable=true&theme-id=light`}
+      src={`https://codepen.io/zhna123/embed/${id}?default-tab=result&editable=true&theme-id=light`}
       frameBorder="no" loading="lazy" allowFullScreen={true}>
 
     </iframe>

@@ -1,0 +1,72 @@
+---
+title: 'CSS: Transition And Animation'
+excerpt: 'This article explained how CSS transition and animation are different from each other.'
+coverImage: '/blog/animation.png'
+date: '2023-12-19'
+ogImage:
+  url: '/blog/animation.png'
+---
+
+CSS transition and animation serve different purposes, and I'd like to think that transition is a simpler case of animation.
+
+Here is a Demo I am going to use to illustrate the differences.
+<CodePen id="VwgoGXN"/>
+
+### CSS transition:
+[transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition) can make an element change its state more smoothly. 
+
+In the Demo, when we hover the mouse over the left button, the background jumped to gray color immediately, while for the middle button, this change happened gradually.
+
+*transition* is used to control state change for a specific element, for example, changing an element's *background-color* from white to gray. It is often used with pseodo classes, like *:hover*, *:focus*, .etc, since they can trigger state change.
+
+*transition* is also a *one time* event - transition, and done.
+
+There are several properties that we can set to control the state transition:
+- *transition-property*
+  - It could be *all* or a specific property that we want to apply state change, like *color*, *margin*, *box-shadow*, .etc.
+- *transition-duration*
+  - How long it takes to complete the transition in *s* or *ms*
+- [*transition-timing-function*](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function)
+  - Values include: *ease*, *ease-in*, *ease-out*, *ease-in-out*, *linear*, *step-start*, *step-end*, *steps* function, *cubic-bezier* function
+- *transition-delay*
+  - Time delay to start transition in *s* or *ms*
+- [*transition-behavoir*](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-behavior) - experimental
+
+To write it the shorthand way:
+
+`transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay]`
+
+We can also use commas to separate multiple transitions.
+
+### CSS animation:
+[animation](https://developer.mozilla.org/en-US/docs/Web/CSS/animation) gives more detailed control over element state transition. We can set multiple intermediate states, specify how many times the transitions should happen, .etc. 
+
+In the Demo above, hovering over the button on the right will trigger a blinking effect, since after the background color changing to gray, there are more state changes followed(defined in *@keyframes at-rule*), as well as the number of times the effect is playing. 
+
+All of these are controlled by different properties. Several of these properties are just like(and behave like) *transition*:
+- *animation-duration*
+- *animation-timing-function*
+- *animation-delay*
+
+Here are some other properties we often use:
+- *animation-name*
+  - We can use [*@keyframes at-rules*](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) to define *animation-name* property - this allows us to set intermediate steps for element state change.
+- *animation-iteration-count*
+  - We can specify a *number* or *infinite* to control how many times the animation would play.
+- *animation-direction*
+  - Values include: *normal*(default), *reverse*, *alternate*, *alternate-reverse*
+- *animation-fill-mode*
+  - Values include: *none*(default), *forwards*, *backwards*, *both*
+  - Default value will not apply any styles while not executing the animation
+  - With *forwards* value, the element will retain the values of the last keyframe(depends on *animation-direction* and *animation-iteration-count*).
+  - With *backwards* value, the element will apply the values of the first keyframe(depends on *animation-direction* and *animation-iteration-count*), and retain this during *animation-delay*
+  - *both* value following the rules of both *forwards* and *backwards*
+- *animation-play-state*
+  - Values include: *running*, *paused*
+
+To write it the shorthand way:
+
+`animation: [animation-name] [animation-duration] [animation-timing-function] [animation-delay] [...other properties]`
+
+We can also use commas to separate multiple animations.
+
