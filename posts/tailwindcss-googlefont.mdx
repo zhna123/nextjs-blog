@@ -41,9 +41,9 @@ theme: {
 3. Now you can apply *font-sans* to different elements.  
 
 **Use Google Fonts in a Next.js(version 13+) + TailwindCSS project**
-1. Import Google Fonts from *next/font/google* in the top level component and load the fonts. This might be *pages/_app.tsx* in Pages Router, or *app/layout.tsx* in App Router.
+1. Import Google Fonts from *next/font/google* in the top level component and load the fonts. This might be *pages/_app.tsx* in pages router, or *app/layout.tsx* in app router.
 ```
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -58,12 +58,28 @@ const playfair_display = Playfair_Display({
 })
 ```
 2. Add defined CSS variable for each font to the HTML document
+
+in pages router:
 ```
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={`${inter.variable} ${playfair_display.variable}`}>
       <Component {...pageProps} />
     </main>
+  )
+}
+```
+or in app router:
+```
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} ${playfair_display.variable}`}>{children}</body>
+    </html>
   )
 }
 ```
