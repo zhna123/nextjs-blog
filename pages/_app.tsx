@@ -1,12 +1,13 @@
 import '../styles/globals.css'
 import { AppProps } from 'next/app'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Nunito, Playfair_Display } from 'next/font/google'
 
-const inter = Inter({ 
+const nunito = Nunito({ 
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter'
+  variable: '--font-nunito'
 })
+
 // serif
 const playfair_display = Playfair_Display({ 
   subsets: ['latin'],
@@ -20,7 +21,7 @@ const playfair_display = Playfair_Display({
 // or to add global styles
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${inter.variable} ${playfair_display.variable} font-sans`}>
+    <main className={`${nunito.variable} ${playfair_display.variable} font-sans`}>
       <Component {...pageProps} />
     </main>
   )

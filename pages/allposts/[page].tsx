@@ -18,7 +18,7 @@ function PaginatedPage({ posts, totalPosts, currentPage }: PageProps) {
       <Head>
         <title>{`Page ${currentPage} - ${SITE_TITLE}`}</title>
       </Head>
-      <Profile />
+      {/* <Profile /> */}
       <section>
         <PaginationPage
           posts={posts}

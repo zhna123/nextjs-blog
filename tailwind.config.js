@@ -8,8 +8,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ['var(--font-nunito)'],
         serif: ['var(--font-playfair_display)']
+      },
+      colors: {
+        blog_green: '#43766C',
+        blog_bg_green: '#F8FAE5'
       }
     },
   },

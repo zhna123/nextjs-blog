@@ -6,15 +6,16 @@ import clsx from 'clsx';
 export default function Header() {
   let pathname = usePathname()
   return (
-    <header>
-      <nav className='h-8 w-full text-slate-800'>
-        <ul className='flex justify-center md:justify-end gap-4'>
+    <header className="bg-blog_green text-blog_bg_green sticky top-0 z-10 flex justify-between items-center h-[100px] p-12 lg:px-24">
+      <h1 className="font-bold">Na's Blog</h1>
+      <nav>
+        <ul className='flex justify-end gap-4'>
           <li>
             <Link href="/">
               <span className={
                 clsx(
                   {
-                    'font-semibold': pathname === '/' || pathname.includes('/posts'),
+                    'font-bold': pathname === '/' || pathname.includes('/posts'),
                   }
                 )
               }>Blog</span>
@@ -25,7 +26,7 @@ export default function Header() {
               <span className={
                 clsx(
                   {
-                    'font-semibold': pathname === '/about',
+                    'font-bold': pathname === '/about',
                   }
                 )
               }>About</span>
@@ -36,7 +37,7 @@ export default function Header() {
               <span className={
                 clsx(
                     {
-                      'font-semibold': pathname === '/contact',
+                      'font-bold': pathname === '/contact',
                     }
                   )
                 }>Contact</span>

@@ -61,7 +61,7 @@ export default function Contact() {
       <Head>
         <title>{title}</title>
       </Head>
-      <Profile />
+      {/* <Profile /> */}
       { error ? <div className="text-center mb-6 text-red-600">{error}</div> 
             : ( sent ? <div className="text-center mb-6 text-green-600">I've received your message and will get back to you soon!</div> : '')
       }
@@ -75,7 +75,7 @@ export default function Contact() {
         <label htmlFor="message">Message</label>
         <textarea id="message" name="message" aria-label="message" className="form-textarea mb-8 border-b-slate-300 border-x-0 border-t-0" required></textarea>
 
-        <button type="submit" disabled={isSubmitting} className={`form-input border-none rounded-sm bg-slate-300 drop-shadow ${isSubmitting ? 'text-slate-400' : ''}`}>
+        <button type="submit" disabled={isSubmitting} className={`form-input border-none rounded bg-blog_green drop-shadow text-blog_bg_green ${isSubmitting ? 'text-slate-400' : ''}`}>
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </form>

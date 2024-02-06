@@ -1,7 +1,11 @@
 import { MDXRemote } from "next-mdx-remote";
 import Link from "next/link";
+import Image from "next/image";
 import { highlight } from "sugar-high";
 
+function PostImage(props: any) {
+  return <Image alt={props.alt} className='border border-slate-200 mb-10' {...props} />
+}
 
 function Code({ children, ...props }) {
   let codeHTML = highlight(children);
@@ -36,7 +40,7 @@ function CodePen({ title="", id }) {
   )
 }
 
-const components = { code: Code, a: CustomLink, CodePen }
+const components = { code: Code, a: CustomLink, CodePen, Image: PostImage }
 
 export function CustomMDX(props) {
   const mdxSource = props.mdxSource;
