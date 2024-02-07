@@ -43,7 +43,9 @@ export default function Home({
       <Head>
         <title>{SITE_TITLE}</title>
       </Head>
-      <Profile />
+      <p className='text-center text-lg mb-6 text-slate-600 font-semibold'>Latest Posts</p>
+      <hr className='w-[50px] mx-auto mb-12 border-slate-400' />
+      {/* <Profile /> */}
       <section>
         <PaginationPage 
           posts={posts}

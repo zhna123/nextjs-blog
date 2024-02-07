@@ -4,7 +4,7 @@ import Intro from "./intro";
 
 export default function Profile() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mb-12">
       <Image
         priority
         src="/images/profile.png"
@@ -13,8 +13,8 @@ export default function Profile() {
         alt=""
         className='rounded-full'
       />
-      <h1 className='font-bold text-slate-800 pt-4 font-serif'>{NAME}</h1>
-      <Intro />
+      {/* <h1 className='font-bold text-slate-800 pt-4 font-serif'>{NAME}</h1> */}
+      {/* <Intro /> */}
     </div>
   )
 }

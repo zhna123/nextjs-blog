@@ -7,6 +7,16 @@ ogImage:
   url: '/blog/closure.png'
 ---
 
+<Image
+  alt={''}
+  src={`/blog/closure.png`}
+  width={3509 / 3}
+  height={2482 / 3}
+  priority
+/>
+
+---
+
 A basic example:
 ```js
 function outerFunction() {
@@ -27,7 +37,7 @@ There are two nested functions in this example: an *outerFunction* and an *inner
 This is useful to create private variables and data capsulation. One usage is in the factory pattern, the factory function returns an object that contains the public accessible interface, while encapsulate private data. 
 
 Factory pattern example:
-```
+```js
 function counterFactory() {
   let counter = 0;
 

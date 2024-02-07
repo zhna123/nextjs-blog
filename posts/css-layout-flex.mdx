@@ -1,0 +1,65 @@
+---
+title: 'CSS Layout: Flex'
+excerpt: 'This article provides a short review of the commonly utilized features of flex layout.'
+date: '2024-02-06'
+---
+
+Flexbox is used for one dimension layout that can be optionally wrapped. 
+
+What helped me most when understanding flex layout is to think of flex items as ONE group on main axis - you can't
+set individual locaion for each of them on main axis.
+
+After declaring `display: flex` on an element, all its direct children become flex items. Then you take these flex items as a group,
+arrange them on the main axis based on available space, and adjust their alignment individually on cross axis. 
+
+### Alignment
+- When properties begin with `justify-`, it is for main axis.
+- When properties begin with `align-`, it is for cross axis.
+- `justify-content` is used for distributing spaces for the group of flex items on main axis
+- `align-content` is used for distributing spaces for the group of flex items on cross axis, when the content wraps
+- There is no `justify-self` or `justify-items` because flex items act as a group on main axis
+
+After declaring `display: flex`, the initial behavior of flex items are:
+1. display as a row
+2. do not wrap
+3. do not grow
+4. line up at the start of the container
+
+You can control flex direction and wrap by setting corresponding properties `flex-direction` and `flex-wrap`.
+There is a shorthand for setting both: `flex-flow: column wrap`
+
+---
+
+### Setting how each flex item grows/shrinks inside of a flex container
+
+#### Initial value (`flex: initial`)
+```
+flex-grow: 0
+flex-shrink: 1
+flex-basis: auto
+```
+* You can set these value individually on a flex item, or set: `flex: initial` or `flex: 0 1 auto` on it.
+
+**Note**
+  * `flex-basis: auto` means using the item's width or height property
+  * `flex-basis: content` means sizing is based on the item's content; For older browser support, the equivalent effect can be had by using 
+  `flext-basis: auto` and auto width or height together.
+
+#### Allow items to grow, while larger items get more space (`flex: auto`)
+```
+flex-grow: 1
+flex-shrink: 1
+flex-basis: auto
+```
+* You can set these value individually on a flex item, or set: `flex: auto` or `flex: 1 1 auto` on it.
+
+#### Allow items to grow to be equal sizes (`flex: 1`)
+```
+flex-grow: 1
+flex-shrink: 1
+flex-basis: 0
+```
+* You can set these value individually on a flex item, or set: `flex: 1` or `flex: 1 1 0` on it.
+
+
+

@@ -39,7 +39,7 @@ export default function Post({ mdxSource, title, date }: Props) {
       <Head>
         <title>{ title }</title>
       </Head>
-      <div className='py-6 text-slate-600'>
+      <div className='py-6 text-blog_green'>
         <Link href="/">← Back to articles</Link>
       </div>
       <article className='pt-12'>
@@ -51,7 +51,7 @@ export default function Post({ mdxSource, title, date }: Props) {
           <CustomMDX mdxSource={mdxSource} />
         </div>
       </article>
-      <div className='py-20 text-slate-600'>
+      <div className='py-20 text-blog_green'>
         <Link href="/">← Back to articles</Link>
       </div>
     </Layout>

@@ -1,0 +1,21 @@
+---
+title: 'CSS: Animation with pseudo-element'
+excerpt: 'An example of using a pseudo-element to create an animation.'
+date: '2024-02-05'
+---
+
+Here is a shimmer effect using *before* element. It triggers when you hover on the rectangle.
+
+<CodePen id="wvOXPdd" />
+
+Using *before* element, we create a virtual direct first child of the element. It is not part of the DOM. 
+
+In this example, the *before* element is absolutely positioned with inset(top, right, bottom, left) set to 0. Then we move it horizontally to the left of the parent *container* element(using translateX function).
+For it to show up, we must add `content` property as well. In order to mimic the shimmer effect, we give *before* element a gradient background. 
+
+Since *before* element acts as the first child of parent *container*, we can add `overflow:hidden` to the parent to hide *before* when it is outside the parent.
+
+The shimmer effect is created when *before* element moves in to the parent *container* element. We define a shimmer keyframes and apply it with animation to *before* element.
+
+Make sure the order is correct here `.container:hover:before`. You can't apply hover on *before* element because it is not a DOM.
+

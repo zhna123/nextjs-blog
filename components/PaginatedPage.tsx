@@ -13,21 +13,25 @@ type PageProps = {
 
 const Post = ({coverImage, id, title, date, excerpt}: any) => {
   return (
-    <li className='grid grid-cols-3 gap-4 py-6'>
-      <Image 
+    <li className='grid grid-cols-5 gap-4 py-8'>
+      {/* <Image 
         priority 
         src={coverImage} 
         width={350}
         height={250}
         alt="" 
         className='object-cover rounded-lg'
-      />
-      <div className='col-span-2 px-2'>
-        <Link href={`/posts/${id}`} className='text-xl font-bold text-slate-800'>{title}</Link>
+      /> */}
+      <div className='text-blog_green pt-2'>
+        <Date dateString={date} />
+      </div>
+      <div className="flex flex-col gap-2 pt-2">
+        <div className="w-2 h-2 rounded-full bg-blog_green"></div>
+        <div className="w-px ml-1 bg-slate-300 flex-grow -translate-x-1/2"></div>
+      </div>
+      <div className='col-span-3 px-2 text-slate-800'>
+        <Link href={`/posts/${id}`} className='text-xl font-bol'>{title}</Link>
         <br />
-        <small className='text-slate-600'>
-          <Date dateString={date} />
-        </small>
         <p className='pt-4'>{excerpt}</p>
       </div>
     </li>

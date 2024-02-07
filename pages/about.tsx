@@ -12,12 +12,13 @@ export default function About() {
       </Head>
       <Profile />
       <section>
-        <p>
-          Hi! I am Na, an independent web developer. Currently, I'm learning and using Next.js to build websites.<br />
+        <p className="text-slate-800">
+          Hi! I am Na, an independent web developer. I share concise articles about what I'm learning in development.
           <br />
-          When I work with tech stuff, I often find myself searching for related topics, especially when tackling confusing concepts. 
-          After a while, I noticed that I keep forgetting and end up searching for the same things repeatedly! So, I thought it would be helpful to 
-          organize what I've learned, and that's why I created this blog. <br />
+          <br />
+          When I learn new things or work on my projects, I often look up related topics, especially if I find something confusing or hard to memorize. 
+          I realized that I keep forgetting things and have to search for them again and again. So, I decided to organize everything I've learned, and 
+          that's how I started this blog. <br />
           <br />
           When I am not working on web projects, you can find me reading, exercising, and cherishing moments with my son 
           and family. We're on a journey of growth together every day. <br />
