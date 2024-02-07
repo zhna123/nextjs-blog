@@ -13,17 +13,17 @@ export default function About() {
       <Profile />
       <section>
         <p className="text-slate-800">
-          Hi! I am Na, an independent web developer. I share concise articles about what I'm learning in development.
+          Hi! I'm Na, an independent web developer sharing curated articles on all things web development.
           <br />
           <br />
-          When I learn new things or work on my projects, I often look up related topics, especially if I find something confusing or hard to memorize. 
-          I realized that I keep forgetting things and have to search for them again and again. So, I decided to organize everything I've learned, and 
-          that's how I started this blog. <br />
+          While learning or working on projects, I frequently research topics, especially those I find confusing 
+          or difficult to remember. Realizing I often forget and repeatedly search for the same information, 
+          I decided to organize everything I've learned. That's what inspired me to start this blog. 
           <br />
-          When I am not working on web projects, you can find me reading, exercising, and cherishing moments with my son 
-          and family. We're on a journey of growth together every day. <br />
-
-
+          <br />
+          When I'm not working on web projects, I enjoy reading, exercising, and spending time with my family. 
+          We're growing together every day.
+          <br />
         </p>
       </section>
     </Layout>

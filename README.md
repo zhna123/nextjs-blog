@@ -1,3 +1,8 @@
+## Update 1/24
+* Updated UI
+
+---
+
 ## Update 12/23
 * Used MDX instead of MD for blog content
 * Implemented Pagination
