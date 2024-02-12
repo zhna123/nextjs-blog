@@ -1,0 +1,172 @@
+---
+title: 'CSS Layout: Grid'
+excerpt: 'This article provides a short review of the commonly utilized features of grid layout.'
+date: '2024-02-10'
+---
+
+Grid is used for two-dimension layout(rows and columns).
+
+## Define a basic grid
+The following defines a grid layout with three 100px columns and two 200px rows.
+```
+.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px
+  grid-template-rows: 200px 200px
+}
+```
+We can use also `repeat()` function to define rows and columns instead, eg:
+```
+grid-template-columns: repeat(3, 100px)
+grid-template-rows: repeat(2, 200px)
+```
+
+## Define grid columns and rows (number and sizes)
+There are different ways to define column and row track number and sizes. They can be used together.
+
+### Common absolute and relative length unit
+
+* Examples are: px, em, rem, percentage, .etc
+
+### Fractional unit
+
+* fr - fraction
+
+### keyword sizing
+
+* min-content
+
+It makes the grid track as narrow as the longest word in the content.
+
+* max-content
+
+It makes the grid track wide enough so the content can be displayed in one long unbroken string.
+
+* fit-content()
+
+This function will make the grid track wide enough to hold the content in one long unbroken string, 
+but it will wrap if the track past the size specified in the function.
+
+* auto
+
+auto keyword will make the track as wide as the content.
+
+* minmax(min, max) function
+
+You can specify a range using this function. 
+
+**Note**
+
+The min value defines the initial size the items start to grow.
+For example:
+- grid-template-columns: `repeat(3, minmax(auto, 1fr))`
+This will give the three column tracks enough space for their content, then distribute rest of the available space among the columns.
+- grid-template-columns: `repeat(3, minmax(0, 1fr))`
+The tracks' intial sizes are 0, and they will get equal amount of available space.
+
+### auto-fill and auto-fit
+
+auto-fill and auto-fit both fit as many tracks as they can in the grid container. They are both used with `repeat()` function.
+
+```
+grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+```
+
+**Difference**
+
+When used with `minmax()` in `repeat()` to create responsive layout, and the grid container doesn't have enough items to fill the **first** track,
+* auto-fill:
+Empty tracks will be created using the available space. (you can see empty space on the first track)
+* auto-fit:
+The grid items will stretch to share rest of the available space equally.(no space will be left on the first track)
+
+## Define placement for grid items
+
+### Explicit placement
+This is when you define `grid-template-rows` and `grid-template-columns`, and use `grid-column-start`, `grid-column-end`, `grid-row-start`, `grid-row-end`,
+or shorthand `grid-column` and `grid-row` to explicitly place each grid item in specific grid cell/cells.
+
+### Auto placement
+Sometimes you don't know how many grid items there will be. You can let the browser automatically place the items based on auto-placement rules.
+* `grid-auto-flow` - define auto-flow directions, ie, fill row first or column first (values can be row, column, row dense, column dense)
+* `grid-auto-rows` and `grid-auto-columns` - specify size of the auto created tracks. The default value is `auto`.(can specify a pattern to repeat)
+
+Example:
+```
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-auto-rows: 100px; 
+  grid-auto-flow: row; 
+}
+```
+
+## Grid items alignment
+Alignment properties are similar to flexbox. `justify-` for inline axis; `align-` for block axis.
+* `justify-content` and `align-content` for distributing space
+* `justify-self` and `align-self` for individual grid item alignment inside the grid area the item is placed in
+* `justify-items` and `align-items` for all the grid items' alignment
+
+## Grid area
+There are two usages of `grid-area `property.
+### shorthand for grid line placement
+syntax:
+`grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end`.
+
+```
+.item {
+  grid-area: 1/2/3/4;
+}
+```
+### place grid items using area names
+* Used with `grid-template-areas`
+* Name each grid item using `grid-area`
+* A period(.) represents an empty cell
+
+```
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 
+    ". header header"
+    "sidebar content content"
+    "footer footer footer";
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.content {
+  grid-area: content;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+```
+
+## Named grid lines for grid items placement
+Instead of using grid line numbers, we can also name the grid lines. 
+* Used with `grid-template-columns` and `grid-template-rows` properties.
+* Used in each grid item to specify start and end lines.
+* Each grid line can have multiple names.
+
+Below is a two-column layout example. (It's almost like drawing the grids - very visual)
+```
+.container {
+  display: grid;
+  grid-template-columns:
+      [main-start aside-start] 1fr [aside-end content-start] 2fr [content-end main-end]; 
+}
+.sidebar {
+    grid-column: aside-start / aside-end;
+}
+
+```
+
