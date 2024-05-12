@@ -13,16 +13,15 @@ export default function About() {
       <Profile />
       <section>
         <p className="text-slate-800">
-          Hi! I'm Na, an independent web developer sharing curated articles on all things web development.
+          Hi! My name is Na. I'm interested in developing websites and applications.
           <br />
           <br />
-          While learning or working on projects, I frequently research topics, especially those I find confusing 
-          or difficult to remember. Realizing I often forget and repeatedly search for the same information, 
-          I decided to organize everything I've learned. That's what inspired me to start this blog. 
+          I created this blog as a space to review and reflect on the different tools and technologies I've learned about.
           <br />
           <br />
-          When I'm not working on web projects, I enjoy reading, exercising, and spending time with my family. 
-          We're growing together every day.
+          In my free time, I enjoy reading, exercising, music, and spending time with my family.
+          <br />
+          Feel free to drop me a message if you'd like to connect!
           <br />
         </p>
       </section>

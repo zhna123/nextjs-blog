@@ -1,6 +1,9 @@
 ## Update 1/24
 * Updated UI
 
+### screenshots
+![screen](/screenshots/screen.png)
+
 ---
 
 ## Update 12/23
